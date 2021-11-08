@@ -39,11 +39,13 @@ pipeline {
         }
         stage("Test Selenium"){
             steps {
-                if (${selenium}) {
-                    sh 'echo selenium'
-                    sh "mvn test -Pselenium"
-                } else {
-                    sh 'echo no_selenium'
+                script{
+                    if (${selenium}) {
+                        sh 'echo selenium'
+                        sh "mvn test -Pselenium"
+                    } else {
+                        sh 'echo no_selenium'
+                    }
                 }
             }
         }
