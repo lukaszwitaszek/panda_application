@@ -37,12 +37,16 @@ pipeline {
                 sh 'mvn package -Pdocker'
             }
         }
-        //stage("Test Selenium"){
-        //    steps {
-        //        sh 'echo selenium'
-        //        sh "mvn test -Pselenium"
-        //    }
-        //}
+        stage("Test Selenium"){
+            steps {
+                if (${selenium}) {
+                    sh 'echo selenium'
+                    sh "mvn test -Pselenium"
+                } else {
+                    sh 'echo no_selenium'
+                }
+            }
+        }
         stage("Run Docker app"){
             steps {
                 sh 'echo run_Docker_app'
