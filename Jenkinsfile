@@ -45,6 +45,7 @@ pipeline {
                         sh "mvn test -Pselenium"
                     } else {
                         sh 'echo no_selenium'
+                        sh 'true'
                     }
                 }
             }
