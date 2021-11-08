@@ -58,10 +58,10 @@ pipeline {
                 }
             }
         }
-        post{
-            always{
-                sh "echo post_always"
-            }
+    }
+    post{
+        always{
+        sh "echo post_always"
         }
     }
 }
