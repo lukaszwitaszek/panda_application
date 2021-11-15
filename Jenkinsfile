@@ -42,7 +42,7 @@ pipeline {
                 script{
                     if (${selenium}) {
                         sh 'echo selenium'
-                        sh "mvn test -Pselenium"
+                   //     sh "mvn test -Pselenium"
                     } else {
                         sh 'echo no_selenium'
                         sh 'true'
