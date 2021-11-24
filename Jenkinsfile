@@ -58,6 +58,27 @@ pipeline {
                 }
             }
         }
+        stage('Run terraform') {
+            steps {
+                dir('infrastructure/terraform') { 
+                        sh 'terraform init && terraform apply -auto-approve -var-file panda.tfvars'
+                } 
+            }
+        }
+        stage('Copy Ansible role') {
+            steps {
+                sh 'sleep 180'
+                sh 'cp -r infrastructure/ansible/panda/ /etc/ansible/roles/'
+            }
+        }
+        stage('Run Ansible') {
+            steps {
+                dir('infrastructure/ansible') { 
+                    sh 'chmod 600 ../panda.pem'
+                    sh 'ansible-playbook -i ./inventory playbook.yml -e ansible_python_interpreter=/usr/bin/python3'
+                } 
+            }
+        }
     }
     post{
         always{
