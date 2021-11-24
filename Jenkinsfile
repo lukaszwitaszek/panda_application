@@ -40,15 +40,7 @@ pipeline {
         stage("Test Selenium"){
             steps {
                 sh 'echo selenium'
-                //script{
-                //    if (${selenium}) {
-                //        sh 'echo selenium'
-                //        sh "mvn test -Pselenium"
-                //    } else {
-                //        sh 'echo no_selenium'
-                //        sh 'true'
-                //    }
-                //}
+                sh "mvn test -Pselenium"
             }
         }
         stage("Run Docker app"){
