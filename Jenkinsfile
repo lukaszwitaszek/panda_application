@@ -40,7 +40,7 @@ pipeline {
         stage("Test Selenium"){
             steps {
                 sh 'echo selenium'
-                sh "mvn test -Pselenium"
+        //        sh "mvn test -Pselenium"
             }
         }
         stage("Run Docker app"){
