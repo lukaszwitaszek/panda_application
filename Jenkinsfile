@@ -40,7 +40,7 @@ pipeline {
         stage("Test Selenium"){
             steps {
                 sh 'echo selenium'
-        //        sh "mvn test -Pselenium"
+                sh "mvn test -Pselenium"
             }
         }
         stage("Run Docker app"){
@@ -58,7 +58,7 @@ pipeline {
                 }
             }
         }
-        stage('Run terraform') {
+/*        stage('Run terraform') {
             steps {
                 dir('infrastructure/terraform') { 
                         sh 'terraform init && terraform apply -auto-approve -var-file panda.tfvars'
@@ -78,7 +78,7 @@ pipeline {
                     sh 'ansible-playbook -i ./inventory playbook.yml -e ansible_python_interpreter=/usr/bin/python3'
                 } 
             }
-        }
+        } */
     }
     post{
         always{
